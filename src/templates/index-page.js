@@ -6,7 +6,8 @@ import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
-import FullWidthImage from "../components/FullWidthImage";
+// import FullWidthImage from "../components/FullScreenImage";
+import FullScreenImage from "../components/FullScreenImage";
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
@@ -17,13 +18,15 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  links
 }) => {
   const heroImage = getImage(image) || image;
 
   return (
     <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
-      <section className="section section--gradient">
+      <FullScreenImage img={heroImage} title={title} subheading={subheading} links={links}/>
+
+      {/*<section className="section section--gradient">
         <div className="container">
           <div className="section">
             <div className="columns">
@@ -69,7 +72,7 @@ export const IndexPageTemplate = ({
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
     </div>
   );
 };
@@ -90,17 +93,39 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
+    <>
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
+        // mainpitch={frontmatter.mainpitch}
+        // description={frontmatter.description}
+        // intro={frontmatter.intro}
+        links={[
+          {
+            label: 'SERAMİK',
+            url: '#'
+          },
+          {
+            label: 'BLOG',
+            url: '#'
+          },
+          {
+            label: 'ONLINE MAĞAZA',
+            url: '#'
+          },
+          {
+            label: 'HAKKIMIZDA',
+            url: '#'
+          },
+          {
+            label: 'İLETİŞİM',
+            url: '#'
+          },
+        ]}
       />
-    </Layout>
+    </>
   );
 };
 
