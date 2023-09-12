@@ -1,80 +1,137 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter",
-    description:
-      "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.",
+    title: `StoryHub`,
+    author: `Monnisa`,
+    about: `Yani gerçekten hanımım diye demiyorum, inanılmaz birisidir kendisi. Çok yetenekli çok çalışkan çok sevecen bir insandır. E hal böyle olunca yaptığı seramikler de muazzam oluyor. İnanmıyorsanız kendiniz bakın.`,
+    description: `A Gatsby Blog`,
+    siteUrl: `https://storyhub-agency-tarex.redq.now.sh/`,
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
     {
-      resolve: "gatsby-plugin-sass",
+      resolve: `gatsby-plugin-styled-components`,
       options: {
-        sassOptions: {
-          indentedSyntax: true,
-        },
+        minify: false, // Breaks styles if not set to false
       },
     },
     {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/static/img`,
-        name: "uploads",
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: "pages",
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/img`,
-        name: "images",
-      },
-    },
-    `gatsby-plugin-image`,
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-transformer-remark",
+      resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          'gatsby-remark-relative-images',
           {
-            resolve: "gatsby-remark-images",
+            resolve: `gatsby-remark-images`,
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 2048,
+              maxWidth: 590,
+              linkImagesToOriginal: true,
             },
           },
           {
-            resolve: "gatsby-remark-copy-linked-files",
+            resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              destinationDir: "static",
+              wrapperStyle: `margin-bottom: 1.0725rem`,
             },
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-mermaid`,
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+          },
+
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+          },
+          {
+            resolve: `gatsby-remark-smartypants`,
+          },
+          {
+            resolve: `gatsby-remark-reading-time`,
           },
         ],
       },
     },
     {
-      resolve: "gatsby-plugin-netlify-cms",
+      resolve: `gatsby-plugin-image`,
+    },
+    {
+      resolve: `gatsby-transformer-sharp`,
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID, //`ADD YOUR TRACKING ID HERE`,
       },
     },
     {
-      resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
+      resolve: `gatsby-plugin-feed`,
       options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ["/all.sass"], // applies purging only on the bulma css file
+        feeds: [],
       },
-    }, // must be after other CSS plugins
-    "gatsby-plugin-netlify", // make sure to keep it last in the array
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Müstesna Tasarım`,
+        short_name: `MustesnaTasarim`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `content/assets/favicon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+    },
+    {
+      resolve: `gatsby-plugin-react-helmet`,
+    },
+    {
+      resolve: `gatsby-plugin-lodash`,
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT, // add your MC list endpoint here; see instructions below
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: [
+            'Poppins:300,400,500,600,700',
+            'Fira Sans:100,300,400,500,600,700',
+          ],
+        },
+      },
+    },
   ],
 };
