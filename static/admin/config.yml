@@ -14,14 +14,15 @@ collections:
     slug: "index"
     media_folder: ''
     public_folder: ''
-    path: "{{slug}}/index" # Filename template, e.g., YYYY-MM-DD-title.md
+    path: "{{product_id}}/index" # Filename template, e.g., YYYY-MM-DD-title.md
     editor:
       preview: false
     fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Store Link", name: "store_link", widget: "string"}
-      - {label: "Tags", name: "tags", widget: "list"}
-      - label: "Cover"
+      - {label: "Başlık", name: "title", widget: "string"}
+      - {label: "Ürün Kodu", name: "product_id", widget: "string"}
+      - {label: "Ürün satış linki", name: "store_link", widget: "string"}
+      - {label: "Etiketler", name: "tags", widget: "list"}
+      - label: "Vitrin Resmi"
         name: "cover"
         widget: "image"
         choose_url: true
@@ -29,4 +30,4 @@ collections:
         media_library:
           config:
             multiple: true
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Ürün açıklaması', name: 'body', widget: 'markdown' }
