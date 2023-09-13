@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: `https://storyhub-agency-tarex.redq.now.sh/`,
   },
   plugins: [
+    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {

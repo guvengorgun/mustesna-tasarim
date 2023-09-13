@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+# This lines should *not* be indented
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "index"
+    media_folder: ''
+    public_folder: ''
+    path: "{{product_id}}/index" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false
+    fields: # The fields for each document, usually in front matter
+      - {label: "Başlık", name: "title", widget: "string"}
+      - {label: "Ürün Kodu", name: "product_id", widget: "string"}
+      - {label: "Ürün satış linki", name: "store_link", widget: "string"}
+      - {label: "Etiketler", name: "tags", widget: "list"}
+      - label: "Vitrin Resmi"
+        name: "cover"
+        widget: "image"
+        choose_url: true
+        default: "/static/preview.png"
+        media_library:
+          config:
+            multiple: true
+      - { label: 'Ürün açıklaması', name: 'body', widget: 'markdown' }
