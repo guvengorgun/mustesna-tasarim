@@ -14,7 +14,7 @@ collections:
     slug: "index"
     media_folder: ''
     public_folder: ''
-    path: "{{title}}/index" # Filename template, e.g., YYYY-MM-DD-title.md
+    path: "{{slug}}/index" # Filename template, e.g., YYYY-MM-DD-title.md
     editor:
       preview: false
     fields: # The fields for each document, usually in front matter
