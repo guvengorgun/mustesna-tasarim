@@ -20,7 +20,7 @@ collections:
     fields: # The fields for each document, usually in front matter
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Store Link", name: "store_link", widget: "string"}
-      - {label: "Tags", name: "store_link", widget: "list"}
+      - {label: "Tags", name: "tags", widget: "list"}
       - label: "Cover"
         name: "cover"
         widget: "image"
