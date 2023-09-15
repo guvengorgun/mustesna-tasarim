@@ -25,6 +25,7 @@ function Search() {
             frontmatter {
               date(formatString: "MMMM D, YYYY")
               title
+              store_link
               description
               tags
               cover {
