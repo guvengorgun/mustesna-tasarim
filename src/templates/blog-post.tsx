@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, navigate } from 'gatsby';
 import _ from 'lodash';
 import urljoin from 'url-join';
 import { DiscussionEmbed } from 'disqus-react';
@@ -19,6 +19,7 @@ import {
   IoLogoPinterest,
   IoLogoReddit,
 } from 'react-icons/io';
+import Button from '../components/button/button';
 import {
   BlogPostDetailsWrapper,
   RelatedPostWrapper,
@@ -28,7 +29,7 @@ import {
   BlogPostFooter,
   PostShare,
   PostTags,
-  BlogPostComment,
+  BlogPostComment, BlogPostButtonWrapper,
 } from './templates.style';
 
 const BlogPostTemplate = (props: any) => {
@@ -61,7 +62,13 @@ const BlogPostTemplate = (props: any) => {
           description={post.html}
           imagePosition="left"
         />
-
+        <BlogPostButtonWrapper>
+          <Button
+            title="Satın Al"
+            disabled={!post.frontmatter.store_link}
+            onClick={() => navigate(post.frontmatter.store_link)}
+          />
+        </BlogPostButtonWrapper>
         <BlogPostFooter
           className={post.frontmatter.cover == null ? 'center' : ''}
         >
@@ -147,6 +154,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "DD MMM, YYYY")
+        store_link
         description
         tags
         cover {

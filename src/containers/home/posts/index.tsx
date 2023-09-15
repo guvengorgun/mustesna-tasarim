@@ -39,6 +39,7 @@ const Posts: React.FunctionComponent<PostsProps> = () => {
               date(formatString: "MMM DD, YYYY")
               title
               description
+              store_link
               tags
               cover {
                 childImageSharp {

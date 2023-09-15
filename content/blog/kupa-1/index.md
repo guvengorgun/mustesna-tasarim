@@ -1,6 +1,7 @@
 ---
 title: Marshmellow Kupa
 date: '2019-05-24'
+store_link: 'https://www.shopier.com/ShowProductNew/products.php?id=14884289'
 tags: ['kupa', 'tatli']
 cover: './kupacikabom2.jpg'
 ---

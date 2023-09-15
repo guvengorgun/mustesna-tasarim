@@ -207,6 +207,23 @@ export const TagName = styled.h1`
     font-size: 22px;
   }
 `;
+
+export const BlogPostButtonWrapper = styled.div`
+  margin: 0 0 0 auto;
+  width: 58%;
+  max-width: 100%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 990px) {
+    padding-top: 40px;
+    width: 100%;
+  }
+  &.center {
+    margin: 0 auto;
+  }
+`;
 export const BlogPostFooter = styled.div`
   margin: 0 0 0 auto;
   width: 58%;
